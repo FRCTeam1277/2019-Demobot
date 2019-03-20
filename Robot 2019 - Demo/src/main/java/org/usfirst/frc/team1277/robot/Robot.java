@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team1277.robot.commands.Auto;
+import org.usfirst.frc.team1277.robot.commands.Demo;
 import org.usfirst.frc.team1277.robot.commands.Drive;
 import org.usfirst.frc.team1277.robot.commands.Front;
 import org.usfirst.frc.team1277.robot.subsystems.Dashboard;
@@ -52,7 +53,8 @@ public class Robot extends TimedRobot {
 		Front.front = "Hatch";
 
 		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new Auto());
+		m_chooser.addDefault("Demo Mode", new Demo());
+		m_chooser.addOption("Normal Auto", new Auto());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		new Thread(() -> {

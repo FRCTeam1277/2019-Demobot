@@ -10,7 +10,7 @@ public class Drive {
 	private static double MOVE_SPEED = 1.0f, ROTATE_SPEED = 1.0f, CONTROL_EXPONENT_MOVE = 1.0f,
 			CONTROL_EXPONENT_ROTATE = 1.5f;
 	private static double MOVE_DEADZONE = 0.025f, ROTATE_DEADZONE = 0.1f;
-	public static double speed;
+	public static double speed, demo = 1;
 
 	public static double speedCap() {
 		speed = (-OI.joystick.getRawAxis(3) + 1) / 2 * (1 - MIN_SPEED) + MIN_SPEED;
@@ -51,6 +51,10 @@ public class Drive {
 		// Throttle for limiting speed
 		move *= speedCap();
 		rotate *= speedCap();
+
+		// Demo mode speed throttling
+		move *= demo;
+		rotate *= demo;
 
 		move *= DriveTrain.front;
 
